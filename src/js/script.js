@@ -4,20 +4,6 @@ const html = document.documentElement;
 const collBtn = document.querySelector(".collapsible-btn");
 const collContent = document.querySelector(".collapsible-content");
 
-function toggleTheme() {
-    const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    html.setAttribute('data-theme', newTheme);
-    themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
-    
-    // Mettre à jour le graphique si il existe
-    if (chart) {
-        chart.options.scales.x.grid.color = getComputedStyle(document.documentElement).getPropertyValue('--chart-grid');
-        chart.options.scales.y.grid.color = getComputedStyle(document.documentElement).getPropertyValue('--chart-grid');
-        chart.update();
-    }
-}
-
 themeToggle.addEventListener('click', toggleTheme);
 
 console.log("Script chargé");
@@ -102,7 +88,24 @@ function toggleTheme() {
         const data = generateData(n);
         plot(data);
     }
+// Mettre à jour le graphique si il existe
+if (chart) {
+    chart.options.scales.x.grid.color = getComputedStyle(document.documentElement).getPropertyValue('--chart-grid');
+    chart.options.scales.y.grid.color = getComputedStyle(document.documentElement).getPropertyValue('--chart-grid');
+    chart.update();
 }
+}
+
+// function toggleTheme() {
+//     const currentTheme = html.getAttribute('data-theme');
+//     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+//     html.setAttribute('data-theme', newTheme);
+//     themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
+    
+    
+//     }
+// }
+
 // Ajouter cette fonction dans script.js
 function isPrime(num) {
     if (num < 2) return false;
