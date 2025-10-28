@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>Expérimentations Web</title>
+    <script src="https://cdn.plot.ly/plotly-3.1.2.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components/tabs.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Visualisation Mathématique</h1>
+            <button id="themeToggle">🌙</button>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab-button active" data-tab="primes">Nombres Premiers - Excalier de Gauss</button>
+            <button class="tab-button" data-tab="tab2">Tab 2</button>
+            <button class="tab-button" data-tab="tab3">Tab 3</button>
+        </div>
+
+        <div class="tab-content">
+            <!-- Tab Nombres Premiers -->
+             
+            <div id="primes" class="tab-pane active">
+                <div class="collapsible-container">
+                    <button class="collapsible-btn">Afficher / Masquer la description</button>
+                    <div class="collapsible-content">
+                        <p>L’idée est de tracer la fonction :</p>
+                        <p><strong>π(x) = nombre de nombres premiers ≤ x</strong></p>
+                        <p>C’est une fonction en escalier :</p>
+                        <ul>
+                            <li>Elle reste constante entre deux nombres premiers,</li>
+                            <li>Elle augmente de 1 à chaque fois qu’on rencontre un nombre premier.</li>
+                        </ul>
+                        <p>Exemple :</p>
+                        <ul>
+                            <li>π(2) = 1</li>
+                            <li>π(3) = 2</li>
+                            <li>π(4) = 2</li>
+                            <li>π(5) = 3</li>
+                            <li>π(6) = 3</li>
+                            <li>π(7) = 4</li>
+                        </ul>
+                        <p>Graphiquement, c’est une suite de marches : un escalier irrégulier qui monte de 1 à chaque nombre premier.</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <input type="number" id="nInput" min="1" value="50" placeholder="Entrez une valeur">
+                    <button id="drawBtn">Tracer</button>
+                </div>
+                <div class="chart-container">
+                    <div id="myChart"></div>
+                </div>
+            </div>
+
+            <!-- Tab 2 -->
+            <div id="tab2" class="tab-pane">
+                <h2>Contenu Tab 2</h2>
+            </div>
+
+            <!-- Tab 3 -->
+            <div id="tab3" class="tab-pane">
+                <h2>Contenu Tab 3</h2>
+            </div>
+        </div>
+    </div>
+
+    
+   
+</body>
+<script type="module" src="../js/script.js"></script>
+<script type="module" src="../js/modules/tabs.js"></script>
+<script type="module" src="../js/modules/theme.js"></script>
+<script type="module" src="../js/modules/primeNumbers.js"></script>
+
+<!-- Ajoute ce petit script ici -->
+<script>
+    document.getElementById("nInput").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("drawBtn").click();
+        }
+    });
+</script>
+</body>
+</html>
+
+</html>
