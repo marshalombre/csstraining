@@ -1,4 +1,4 @@
-const isDark = false;
+let isDark = false;
 export { isDark };
 
 function toggleTheme() {
