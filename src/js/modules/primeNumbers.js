@@ -61,7 +61,7 @@ export function plot(data) {
 function init() {
     const drawBtn = document.getElementById('drawBtn');
     drawBtn?.addEventListener('click', () => {
-        const n = parseInt(document.getElementById('nInput').value);
+        const n = Number.parseIn(document.getElementById('nInput').value);
         if (n > 0) {
             const data = generateData(n);
             plot(data);

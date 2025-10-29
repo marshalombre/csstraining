@@ -6,7 +6,6 @@
 
 .tab-button {
     padding: 10px 20px;
-    border: none;
     background: var(--bg-color);
     color: var(--text-color);
     cursor: pointer;
