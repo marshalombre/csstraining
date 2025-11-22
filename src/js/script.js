@@ -42,7 +42,6 @@ function plot(data) {
     const xValues = data.map(point => point.x);
     const yValues = data.map(point => point.y);
 
-    // const isDark = html.getAttribute('data-theme') === 'dark';
     const isDark = html.dataset.theme === 'dark';
     
     const trace = {
@@ -78,11 +77,9 @@ function plot(data) {
 }
 
 function toggleTheme() {
-    // const currentTheme = html.getAttribute('data-theme');
     const currentTheme = html.dataset.theme;
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     html.dataset.theme = newTheme;
-    // html.setAttribute('data-theme', newTheme);
     themeToggle.textContent = newTheme === 'light' ? '🌙' : '☀️';
     
     // Redessiner le graphe avec le nouveau thème

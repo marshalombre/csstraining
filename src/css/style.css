@@ -1,72 +1,128 @@
-.container {
-    max-width: 100%;
-    height: 100vh;
+/* ===============================
+   DESIGN PREMIUM INSPIRÉ PICTET
+   Police Inter + Palette Sobre + Espacement Généreux
+   =============================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ===============================
+   VARIABLES - LIGHT MODE (Pictet Style)
+   =============================== */
+:root[data-theme="light"] {
+    /* Couleurs principales - Palette sobre et professionnelle */
+    --bg-color: #FFFFFF;
+    --surface-color: #F8F9FA;
+    --text-color: #1A1D1F;
+    --text-secondary: #6C757D;
+
+    /* Bleu-gris élégant comme accent (inspiré Pictet) */
+    --primary-color: #2C3E50;
+    --primary-hover: #34495E;
+    --secondary-color: #7F8C8D;
+    --accent-color: #3498DB;
+
+    /* UI Elements */
+    --border-color: #E1E4E8;
+    --shadow: rgba(0, 0, 0, 0.08);
+    --chart-grid: rgba(0, 0, 0, 0.1);
+
+    /* Collapsible */
+    --collapsible-bg: #F8F9FA;
+    --collapsible-border: var(--primary-color);
+    --collapsible-text: var(--text-color);
+}
+
+/* ===============================
+   VARIABLES - DARK MODE (Sobre et Luxueux)
+   =============================== */
+:root[data-theme="dark"] {
+    --bg-color: #0D1117;
+    --surface-color: #161B22;
+    --text-color: #F0F6FC;
+    --text-secondary: #8B949E;
+
+    --primary-color: #58A6FF;
+    --primary-hover: #79B8FF;
+    --secondary-color: #6E7681;
+    --accent-color: #1F6FEB;
+
+    --border-color: #30363D;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --chart-grid: rgba(255, 255, 255, 0.1);
+
+    --collapsible-bg: #161B22;
+    --collapsible-border: var(--primary-color);
+    --collapsible-text: var(--text-color);
+}
+
+/* ===============================
+   STYLES GLOBAUX - Typographie Premium
+   =============================== */
+* {
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===============================
+   CONTAINER - Espacement Généreux
+   =============================== */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px;
     display: flex;
     flex-direction: column;
 }
 
-.controls {
-    margin: 20px 0;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.chart-container {
-    flex-grow: 1;
-    width: 100%;
-    min-height: 0;  /* Important pour flex */
-}
-
-input, button {
-    padding: 8px;
-    font-size: 16px;
-}
-
-button {
-    cursor: pointer;
-    background-color: #2e6b2f;
-    color: white;
-    border: none;
-    border-radius: 4px;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
+/* ===============================
+   TYPOGRAPHIE - Hiérarchie Claire
+   =============================== */
 h1 {
-    text-align: center;
-    width: 100%;
-    margin: 0;
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-:root[data-theme="light"] {
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --chart-grid: rgba(0, 0, 0, 0.1);
-}
-
-:root[data-theme="dark"] {
-    --bg-color: #333333;
-    --text-color: #ffffff;
-    --chart-grid: rgba(255, 255, 255, 0.1);
-}
-
-body {
-    background-color: var(--bg-color);
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
     color: var(--text-color);
-    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
 }
 
+p {
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+/* ===============================
+   HEADER - Premium Style
+   =============================== */
 .header {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 20px 0;
+    padding: 40px 0 60px;
     width: 100%;
 }
 
@@ -75,13 +131,227 @@ body {
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    padding: 8px 12px;
-    font-size: 20px;
+    padding: 12px 18px;
+    font-size: 22px;
     cursor: pointer;
-    background: none;
-    border: 1px solid var(--text-color);
-    border-radius: 5px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
     color: var(--text-color);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+#themeToggle:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 4px 16px var(--shadow);
+}
+
+/* ===============================
+   MENU PRINCIPAL - Boutons Premium
+   =============================== */
+.main-menu {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 40px 0 60px;
+    padding: 0;
+}
+
+.main-menu-btn {
+    padding: 16px 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    background: var(--surface-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px var(--shadow);
+    letter-spacing: -0.01em;
+}
+
+.main-menu-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow);
+    border-color: transparent;
+}
+
+.main-menu-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* ===============================
+   SECTIONS - Animations Fluides
+   =============================== */
+.main-section {
+    display: none;
+    width: 100%;
+}
+
+.main-section.active {
+    display: block;
+    animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===============================
+   TABS - Design Épuré
+   =============================== */
+.tabs {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.tab-button,
+.game-tab-button {
+    padding: 12px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    background: var(--surface-color);
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-button:hover,
+.game-tab-button:hover {
+    background: var(--primary-hover);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+.tab-button.active,
+.game-tab-button.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: transparent;
+}
+
+/* ===============================
+   TAB PANES & GAME PANES
+   =============================== */
+.tab-pane,
+.game-pane {
+    display: none;
+    padding: 60px 0;
+}
+
+.tab-pane.active,
+.game-pane.active {
+    display: block;
+    animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===============================
+   CONTROLS - Espacement Amélioré
+   =============================== */
+.controls {
+    margin: 40px 0;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+label {
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+input[type="number"],
+input[type="color"] {
+    padding: 12px 16px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+
+input[type="number"]:focus,
+input[type="color"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+button {
+    padding: 12px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px var(--shadow);
+    letter-spacing: -0.01em;
+}
+
+button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* ===============================
+   CHARTS & CONTAINERS - Cards Premium
+   =============================== */
+.chart-container,
+.game-container {
+    flex-grow: 1;
+    width: 100%;
+    min-height: 0;
+    background-color: var(--surface-color);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 2px 8px var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chart-container:hover,
+.game-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--shadow);
 }
 
 #myChart {
@@ -89,28 +359,331 @@ body {
     height: 100%;
 }
 
-.collapsible-content {
-    max-height: 0;           /* Commence fermé */
-    overflow: hidden;         /* Masque le contenu lorsqu’il est réduit */
-    transition: max-height 0.3s ease;
-    background-color: #f9f9f9;
-    padding: 0 15px;
-    border-left: 3px solid #007BFF;
-    margin-top: 5px;
+/* ===============================
+   COLLAPSIBLE - Style Raffiné
+   =============================== */
+.collapsible-container {
+    margin: 30px 0;
 }
 
-.collapsible-btn {
-    background-color: #007BFF;
-    color: white;
+.collapsible-btn,
+.collapsible-btn-fib,
+.collapsible-btn-palette,
+.collapsible-btn-pascal,
+.collapsible-btn-mandelbrot,
+.collapsible-btn-ulam,
+.collapsible-btn-weierstrass,
+.collapsible-btn-surface {
+    background: var(--surface-color);
+    color: var(--text-color);
     cursor: pointer;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
+    padding: 14px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    width: auto;
+    max-width: 400px;
+    text-align: left;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px var(--shadow);
 }
 
-.collapsible-btn:hover {
-    background-color: #0056b3;
+.collapsible-btn:hover,
+.collapsible-btn-fib:hover,
+.collapsible-btn-palette:hover,
+.collapsible-btn-pascal:hover,
+.collapsible-btn-mandelbrot:hover,
+.collapsible-btn-ulam:hover,
+.collapsible-btn-weierstrass:hover,
+.collapsible-btn-surface:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow);
 }
 
-/* Ajoutez à vos styles CSS existants */
+.collapsible-content,
+.collapsible-content-fib,
+.collapsible-content-palette,
+.collapsible-content-pascal,
+.collapsible-content-mandelbrot,
+.collapsible-content-ulam,
+.collapsible-content-weierstrass,
+.collapsible-content-surface {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: var(--collapsible-bg);
+    color: var(--collapsible-text);
+    padding: 0 20px;
+    border-left: 3px solid var(--collapsible-border);
+    margin-top: 8px;
+    border-radius: 0 8px 8px 0;
+}
+
+.collapsible-content.open,
+.collapsible-content-fib.open,
+.collapsible-content-palette.open,
+.collapsible-content-pascal.open,
+.collapsible-content-mandelbrot.open,
+.collapsible-content-ulam.open,
+.collapsible-content-weierstrass.open,
+.collapsible-content-surface.open {
+    padding: 20px;
+}
+
+.collapsible-content p,
+.collapsible-content-fib p,
+.collapsible-content-palette p,
+.collapsible-content-pascal p,
+.collapsible-content-mandelbrot p,
+.collapsible-content-ulam p,
+.collapsible-content-weierstrass p,
+.collapsible-content-surface p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.collapsible-content strong,
+.collapsible-content-fib strong,
+.collapsible-content-palette strong,
+.collapsible-content-pascal strong,
+.collapsible-content-mandelbrot strong,
+.collapsible-content-ulam strong,
+.collapsible-content-weierstrass strong,
+.collapsible-content-surface strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* ===============================
+   GAME INFO - Badges Premium
+   =============================== */
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.game-score,
+.game-level,
+.game-lives,
+.game-timer,
+.game-high,
+.game-best {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--shadow);
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+.game-score span,
+.game-level span,
+.game-lives span,
+.game-timer span,
+.game-high span,
+.game-best span {
+    font-weight: 700;
+}
+
+.game-controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.game-instructions {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--collapsible-bg);
+    border-left: 3px solid var(--primary-color);
+    border-radius: 0 8px 8px 0;
+}
+
+.game-instructions p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ===============================
+   CANVAS - Style Épuré
+   =============================== */
+canvas {
+    display: block;
+    margin: 0 auto;
+    background-color: #000;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ===============================
+   MEMORY GRID
+   =============================== */
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.memory-card {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.memory-card:hover {
+    transform: scale(1.05);
+}
+
+.memory-card.flipped {
+    background: var(--surface-color);
+    color: var(--text-color);
+}
+
+.memory-card.matched {
+    background: var(--accent-color);
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* ===============================
+   2048 GRID
+   =============================== */
+.grid-2048 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 16px;
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.tile-2048 {
+    aspect-ratio: 1;
+    background: var(--surface-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+
+.tile-2048[data-value="2"] {
+    background: #eee4da;
+    color: #776e65;
+}
+
+.tile-2048[data-value="4"] {
+    background: #ede0c8;
+    color: #776e65;
+}
+
+.tile-2048[data-value="8"] {
+    background: #f2b179;
+    color: #f9f6f2;
+}
+
+.tile-2048[data-value="16"] {
+    background: #f59563;
+    color: #f9f6f2;
+}
+
+.tile-2048[data-value="32"] {
+    background: #f67c5f;
+    color: #f9f6f2;
+}
+
+.tile-2048[data-value="64"] {
+    background: #f65e3b;
+    color: #f9f6f2;
+}
+
+.tile-2048[data-value="128"] {
+    background: #edcf72;
+    color: #f9f6f2;
+}
+
+.tile-2048[data-value="256"] {
+    background: #edcc61;
+    color: #f9f6f2;
+}
+
+.tile-2048[data-value="512"] {
+    background: #edc850;
+    color: #f9f6f2;
+}
+
+.tile-2048[data-value="1024"] {
+    background: #edc53f;
+    color: #f9f6f2;
+}
+
+.tile-2048[data-value="2048"] {
+    background: #edc22e;
+    color: #f9f6f2;
+}
+
+/* ===============================
+   SMOOTH SCROLL
+   =============================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .main-menu {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .chart-container,
+    .game-container {
+        padding: 24px;
+    }
+}

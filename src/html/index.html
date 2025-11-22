@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <title>Expérimentations Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-3.1.2.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/components/tabs.css">
 </head>
+
 <body>
     <div class="container">
+        <!-- Header avec titre et bouton de thème -->
         <div class="header">
             <h1>Expérimentations Web</h1>
             <button id="themeToggle">🌙</button>
         </div>
-        
-        <div class="tabs">
-            <button class="tab-button active" data-tab="primes">Nombres Premiers - Escalier de Gauss</button>
-            <button class="tab-button" data-tab="tab2">Tab 2</button>
-            <button class="tab-button" data-tab="tab3">Tab 3</button>
+
+        <!-- Menu Principal -->
+        <div class="main-menu">
+            <button class="main-menu-btn active" data-section="math">🧮 Expériences Mathématiques</button>
+            <button class="main-menu-btn" data-section="games">🎮 Jeux</button>
         </div>
 
-        <div class="tab-content">
-            <!-- Tab Nombres Premiers -->
-             
-            <div id="primes" class="tab-pane active">
+        <!-- Section Mathématiques -->
+        <div id="math-section" class="main-section active">
+            <!-- Navigation par onglets mathématiques -->
+            <div class="tabs">
+                <button class="tab-button active" data-tab="tab1">Nombres Premiers</button>
+                <button class="tab-button" data-tab="tab2">Fibonacci</button>
+                <button class="tab-button" data-tab="tab3">Palette de Couleurs</button>
+                <button class="tab-button" data-tab="tab4">Triangle de Pascal</button>
+                <button class="tab-button" data-tab="tab5">Mandelbrot</button>
+                <button class="tab-button" data-tab="tab6">Spirale d'Ulam</button>
+                <button class="tab-button" data-tab="tab7">Fonction de Weierstrass</button>
+                <button class="tab-button" data-tab="tab8">Surface 3D</button>
+            </div>
+
+            <!-- Tab 1: Nombres Premiers -->
+            <div id="tab1" class="tab-pane active">
+                <h2>Nombres Premiers - Escalier de Gauss</h2>
                 <div class="collapsible-container">
                     <button class="collapsible-btn">Afficher / Masquer la description</button>
                     <div class="collapsible-content">
-                        <p>L’idée est de tracer la fonction :</p>
+                        <p>L'idée est de tracer la fonction :</p>
                         <p><strong>π(x) = nombre de nombres premiers ≤ x</strong></p>
-                        <p>C’est une fonction en escalier :</p>
-                        <ul>
-                            <li>Elle reste constante entre deux nombres premiers,</li>
-                            <li>Elle augmente de 1 à chaque fois qu’on rencontre un nombre premier.</li>
-                        </ul>
-                        <p>Exemple :</p>
-                        <ul>
-                            <li>π(2) = 1</li>
-                            <li>π(3) = 2</li>
-                            <li>π(4) = 2</li>
-                            <li>π(5) = 3</li>
-                            <li>π(6) = 3</li>
-                            <li>π(7) = 4</li>
-                        </ul>
-                        <p>Graphiquement, c’est une suite de marches : un escalier irrégulier qui monte de 1 à chaque nombre premier.</p>
                     </div>
                 </div>
                 <div class="controls">
@@ -55,36 +60,509 @@
                 </div>
             </div>
 
-            <!-- Tab 2 -->
+            <!-- Tab 2: Fibonacci -->
             <div id="tab2" class="tab-pane">
-                <h2>Contenu Tab 2</h2>
+                <h2>Suite de Fibonacci - Visualisation</h2>
+                <div class="collapsible-container">
+                    <button class="collapsible-btn-fib">Afficher / Masquer la description</button>
+                    <div class="collapsible-content-fib">
+                        <p>La <strong>suite de Fibonacci</strong> est une séquence mathématique fascinante.</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <label for="fibInput">Nombre de termes :</label>
+                    <input type="number" id="fibInput" min="1" max="20" value="10">
+                    <button id="fibBtn">Générer</button>
+                </div>
+                <div id="fibResults" style="text-align: center; margin: 20px; font-size: 18px;"></div>
+                <div class="chart-container">
+                    <canvas id="fibCanvas"
+                        style="border: 1px solid var(--text-color); max-width: 600px; margin: 0 auto; display: block;"></canvas>
+                </div>
             </div>
 
-            <!-- Tab 3 -->
+            <!-- Tab 3: Palette de Couleurs -->
             <div id="tab3" class="tab-pane">
-                <h2>Contenu Tab 3</h2>
+                <h2>Générateur de Palette de Couleurs</h2>
+                <div class="collapsible-container">
+                    <button class="collapsible-btn-palette">Afficher / Masquer la description</button>
+                    <div class="collapsible-content-palette">
+                        <p>Génère des palettes de couleurs harmonieuses.</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <label for="colorInput">Couleur de base :</label>
+                    <input type="color" id="colorInput" value="#3498db">
+                    <button id="generatePaletteBtn">Générer Palette</button>
+                </div>
+                <div id="paletteDisplay"
+                    style="display: flex; gap: 10px; justify-content: center; margin: 30px; flex-wrap: wrap;"></div>
+            </div>
+
+            <!-- Tab 4: Triangle de Pascal -->
+            <div id="tab4" class="tab-pane">
+                <h2>Triangle de Pascal</h2>
+                <div class="collapsible-container">
+                    <button class="collapsible-btn-pascal">Afficher / Masquer la description</button>
+                    <div class="collapsible-content-pascal">
+                        <p>Chaque nombre est la somme des deux nombres au-dessus de lui.</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <label for="pascalInput">Nombre de lignes :</label>
+                    <input type="number" id="pascalInput" min="1" max="20" value="12">
+                    <button id="pascalBtn">Générer</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="pascalCanvas"
+                        style="border: 1px solid var(--text-color); max-width: 800px; margin: 0 auto; display: block;"></canvas>
+                </div>
+            </div>
+
+            <!-- Tab 5: Mandelbrot -->
+            <div id="tab5" class="tab-pane">
+                <h2>Ensemble de Mandelbrot</h2>
+                <div class="collapsible-container">
+                    <button class="collapsible-btn-mandelbrot">Afficher / Masquer la description</button>
+                    <div class="collapsible-content-mandelbrot">
+                        <p>L'une des fractales les plus célèbres.</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <label for="mandelbrotIterations">Itérations max :</label>
+                    <input type="number" id="mandelbrotIterations" min="10" max="200" value="50">
+                    <button id="mandelbrotBtn">Générer</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mandelbrotCanvas"
+                        style="border: 1px solid var(--text-color); max-width: 800px; margin: 0 auto; display: block;"></canvas>
+                </div>
+            </div>
+
+            <!-- Tab 6: Spirale d'Ulam -->
+            <div id="tab6" class="tab-pane">
+                <h2>Spirale d'Ulam</h2>
+                <div class="collapsible-container">
+                    <button class="collapsible-btn-ulam">Afficher / Masquer la description</button>
+                    <div class="collapsible-content-ulam">
+                        <p>Distribution des nombres premiers en spirale.</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <label for="ulamInput">Taille :</label>
+                    <input type="number" id="ulamInput" min="10" max="80" value="40">
+                    <button id="ulamBtn">Générer</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="ulamCanvas"
+                        style="border: 1px solid var(--text-color); max-width: 800px; margin: 0 auto; display: block;"></canvas>
+                </div>
+            </div>
+
+            <!-- Tab 7: Weierstrass -->
+            <div id="tab7" class="tab-pane">
+                <h2>Fonction de Weierstrass</h2>
+                <div class="collapsible-container">
+                    <button class="collapsible-btn-weierstrass">Afficher / Masquer la description</button>
+                    <div class="collapsible-content-weierstrass">
+                        <p>Continue partout mais dérivable nulle part.</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <label for="weierstrassTerms">Termes :</label>
+                    <input type="number" id="weierstrassTerms" min="5" max="50" value="20">
+                    <button id="weierstrassBtn">Générer</button>
+                </div>
+                <div class="chart-container">
+                    <div id="weierstrassChart"></div>
+                </div>
+            </div>
+
+            <!-- Tab 8: Surface 3D -->
+            <div id="tab8" class="tab-pane">
+                <h2>Surface 3D Paramétrique</h2>
+                <div class="collapsible-container">
+                    <button class="collapsible-btn-surface">Afficher / Masquer la description</button>
+                    <div class="collapsible-content-surface">
+                        <p>Surface 3D avec ondulations radiales.</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <label for="surfaceResolution">Résolution :</label>
+                    <input type="number" id="surfaceResolution" min="20" max="100" value="50">
+                    <button id="surfaceBtn">Générer</button>
+                </div>
+                <div class="chart-container">
+                    <div id="surfaceChart"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Jeux -->
+        <div id="games-section" class="main-section">
+            <!-- Navigation par jeux -->
+            <div class="tabs">
+                <button class="game-tab-button active" data-game="tetris">Tetris</button>
+                <button class="game-tab-button" data-game="pong">Pong</button>
+                <button class="game-tab-button" data-game="snake">Snake</button>
+                <button class="game-tab-button" data-game="breakout">Breakout</button>
+                <button class="game-tab-button" data-game="memory">Memory</button>
+                <button class="game-tab-button" data-game="2048">2048</button>
+                <button class="game-tab-button" data-game="flappy">Flappy Bird</button>
+                <button class="game-tab-button" data-game="invaders">Space Invaders</button>
+            </div>
+
+            <!-- Jeu 1: Tetris -->
+            <div id="tetris-game" class="game-pane active">
+                <h2>🧱 Tetris</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="tetris-score">0</span></div>
+                        <div class="game-level">Niveau: <span id="tetris-level">1</span></div>
+                    </div>
+                    <canvas id="tetris-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="tetris-start">Démarrer</button>
+                        <button id="tetris-pause">Pause</button>
+                        <button id="tetris-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> ← → Déplacer | ↓ Accélérer | ↑ Rotation | Espace Chute rapide</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 2: Pong -->
+            <div id="pong-game" class="game-pane">
+                <h2>🏓 Pong</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Joueur: <span id="pong-score-player">0</span> | IA: <span
+                                id="pong-score-ai">0</span></div>
+                    </div>
+                    <canvas id="pong-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="pong-start">Démarrer</button>
+                        <button id="pong-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> ↑ ↓ ou Souris pour déplacer la raquette</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 3: Snake -->
+            <div id="snake-game" class="game-pane">
+                <h2>🐍 Snake</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="snake-score">0</span></div>
+                        <div class="game-high">Meilleur: <span id="snake-high">0</span></div>
+                    </div>
+                    <canvas id="snake-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="snake-start">Démarrer</button>
+                        <button id="snake-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> ← → ↑ ↓ pour diriger le serpent</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 4: Breakout -->
+            <div id="breakout-game" class="game-pane">
+                <h2>🧱 Breakout</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="breakout-score">0</span></div>
+                        <div class="game-lives">Vies: <span id="breakout-lives">3</span></div>
+                    </div>
+                    <canvas id="breakout-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="breakout-start">Démarrer</button>
+                        <button id="breakout-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> ← → ou Souris pour déplacer la raquette</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 5: Memory -->
+            <div id="memory-game" class="game-pane">
+                <h2>🎴 Memory</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Coups: <span id="memory-moves">0</span></div>
+                        <div class="game-timer">Temps: <span id="memory-time">0</span>s</div>
+                    </div>
+                    <div id="memory-grid" class="memory-grid"></div>
+                    <div class="game-controls">
+                        <button id="memory-start">Démarrer</button>
+                        <button id="memory-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Objectif:</strong> Retrouver toutes les paires de cartes identiques</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 6: 2048 -->
+            <div id="2048-game" class="game-pane">
+                <h2>🔢 2048</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="2048-score">0</span></div>
+                        <div class="game-best">Meilleur: <span id="2048-best">0</span></div>
+                    </div>
+                    <div id="2048-grid" class="grid-2048"></div>
+                    <div class="game-controls">
+                        <button id="2048-start">Nouvelle Partie</button>
+                        <button id="2048-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> ← → ↑ ↓ pour fusionner les tuiles</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 7: Flappy Bird -->
+            <div id="flappy-game" class="game-pane">
+                <h2>🐦 Flappy Bird</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="flappy-score">0</span></div>
+                        <div class="game-best">Meilleur: <span id="flappy-best">0</span></div>
+                    </div>
+                    <canvas id="flappy-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="flappy-start">Démarrer</button>
+                        <button id="flappy-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> Espace ou Clic pour voler</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 8: Space Invaders -->
+            <div id="invaders-game" class="game-pane">
+                <h2>👾 Space Invaders</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="invaders-score">0</span></div>
+                        <div class="game-lives">Vies: <span id="invaders-lives">3</span></div>
+                    </div>
+                    <canvas id="invaders-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="invaders-start">Démarrer</button>
+                        <button id="invaders-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p>Continue partout mais dérivable nulle part.</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <label for="weierstrassTerms">Termes :</label>
+                    <input type="number" id="weierstrassTerms" min="5" max="50" value="20">
+                    <button id="weierstrassBtn">Générer</button>
+                </div>
+                <div class="chart-container">
+                    <div id="weierstrassChart"></div>
+                </div>
+            </div>
+
+            <!-- Tab 8: Surface 3D -->
+            <div id="tab8" class="tab-pane">
+                <h2>Surface 3D Paramétrique</h2>
+                <div class="collapsible-container">
+                    <button class="collapsible-btn-surface">Afficher / Masquer la description</button>
+                    <div class="collapsible-content-surface">
+                        <p>Surface 3D avec ondulations radiales.</p>
+                    </div>
+                </div>
+                <div class="controls">
+                    <label for="surfaceResolution">Résolution :</label>
+                    <input type="number" id="surfaceResolution" min="20" max="100" value="50">
+                    <button id="surfaceBtn">Générer</button>
+                </div>
+                <div class="chart-container">
+                    <div id="surfaceChart"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Jeux -->
+        <div id="games-section" class="main-section">
+            <!-- Navigation par jeux -->
+            <div class="tabs">
+                <button class="game-tab-button active" data-game="tetris">Tetris</button>
+                <button class="game-tab-button" data-game="pong">Pong</button>
+                <button class="game-tab-button" data-game="snake">Snake</button>
+                <button class="game-tab-button" data-game="breakout">Breakout</button>
+                <button class="game-tab-button" data-game="memory">Memory</button>
+                <button class="game-tab-button" data-game="2048">2048</button>
+                <button class="game-tab-button" data-game="flappy">Flappy Bird</button>
+                <button class="game-tab-button" data-game="invaders">Space Invaders</button>
+            </div>
+
+            <!-- Jeu 1: Tetris -->
+            <div id="tetris-game" class="game-pane active">
+                <h2>🧱 Tetris</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="tetris-score">0</span></div>
+                        <div class="game-level">Niveau: <span id="tetris-level">1</span></div>
+                    </div>
+                    <canvas id="tetris-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="tetris-start">Démarrer</button>
+                        <button id="tetris-pause">Pause</button>
+                        <button id="tetris-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> ← → Déplacer | ↓ Accélérer | ↑ Rotation | Espace Chute rapide</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 2: Pong -->
+            <div id="pong-game" class="game-pane">
+                <h2>🏓 Pong</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Joueur: <span id="pong-score-player">0</span> | IA: <span
+                                id="pong-score-ai">0</span></div>
+                    </div>
+                    <canvas id="pong-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="pong-start">Démarrer</button>
+                        <button id="pong-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> ↑ ↓ ou Souris pour déplacer la raquette</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 3: Snake -->
+            <div id="snake-game" class="game-pane">
+                <h2>🐍 Snake</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="snake-score">0</span></div>
+                        <div class="game-high">Meilleur: <span id="snake-high">0</span></div>
+                    </div>
+                    <canvas id="snake-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="snake-start">Démarrer</button>
+                        <button id="snake-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> ← → ↑ ↓ pour diriger le serpent</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 4: Breakout -->
+            <div id="breakout-game" class="game-pane">
+                <h2>🧱 Breakout</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="breakout-score">0</span></div>
+                        <div class="game-lives">Vies: <span id="breakout-lives">3</span></div>
+                    </div>
+                    <canvas id="breakout-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="breakout-start">Démarrer</button>
+                        <button id="breakout-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> ← → ou Souris pour déplacer la raquette</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 5: Memory -->
+            <div id="memory-game" class="game-pane">
+                <h2>🎴 Memory</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Coups: <span id="memory-moves">0</span></div>
+                        <div class="game-timer">Temps: <span id="memory-time">0</span>s</div>
+                    </div>
+                    <div id="memory-grid" class="memory-grid"></div>
+                    <div class="game-controls">
+                        <button id="memory-start">Démarrer</button>
+                        <button id="memory-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Objectif:</strong> Retrouver toutes les paires de cartes identiques</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 6: 2048 -->
+            <div id="2048-game" class="game-pane">
+                <h2>🔢 2048</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="2048-score">0</span></div>
+                        <div class="game-best">Meilleur: <span id="2048-best">0</span></div>
+                    </div>
+                    <div id="2048-grid" class="grid-2048"></div>
+                    <div class="game-controls">
+                        <button id="2048-start">Nouvelle Partie</button>
+                        <button id="2048-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> ← → ↑ ↓ pour fusionner les tuiles</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 7: Flappy Bird -->
+            <div id="flappy-game" class="game-pane">
+                <h2>🐦 Flappy Bird</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="flappy-score">0</span></div>
+                        <div class="game-best">Meilleur: <span id="flappy-best">0</span></div>
+                    </div>
+                    <canvas id="flappy-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="flappy-start">Démarrer</button>
+                        <button id="flappy-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> Espace ou Clic pour voler</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeu 8: Space Invaders -->
+            <div id="invaders-game" class="game-pane">
+                <h2>👾 Space Invaders</h2>
+                <div class="game-container">
+                    <div class="game-info">
+                        <div class="game-score">Score: <span id="invaders-score">0</span></div>
+                        <div class="game-lives">Vies: <span id="invaders-lives">3</span></div>
+                    </div>
+                    <canvas id="invaders-canvas"></canvas>
+                    <div class="game-controls">
+                        <button id="invaders-start">Démarrer</button>
+                        <button id="invaders-reset">Recommencer</button>
+                    </div>
+                    <div class="game-instructions">
+                        <p><strong>Contrôles:</strong> ← → Déplacer | Espace Tirer</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    
-   
+    <script type="module" src="../js/core/app.js"></script>
 </body>
-<script type="module" src="../js/script.js"></script>
-<script type="module" src="../js/modules/tabs.js"></script>
-<script type="module" src="../js/modules/theme.js"></script>
-<script type="module" src="../js/modules/primeNumbers.js"></script>
-
-<!-- Ajoute ce petit script ici -->
-<script>
-    document.getElementById("nInput").addEventListener("keydown", function(event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            document.getElementById("drawBtn").click();
-        }
-    });
-</script>
-</body>
-</html>
 
 </html>
