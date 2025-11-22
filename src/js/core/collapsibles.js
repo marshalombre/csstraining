@@ -12,18 +12,18 @@ export function initCollapsibles() {
     ];
 
     collapsibleSelectors.forEach(selector => {
-        const btn = document.querySelector(selector);
-        if (btn) {
+        const buttons = document.querySelectorAll(selector);
+        buttons.forEach(btn => {
             btn.addEventListener('click', function () {
                 const content = this.nextElementSibling;
                 if (content.style.maxHeight && content.style.maxHeight !== '0px') {
                     content.style.maxHeight = '0';
                     content.classList.remove('open');
                 } else {
-                    content.style.maxHeight = content.scrollHeight + 'px';
                     content.classList.add('open');
+                    content.style.maxHeight = content.scrollHeight + 'px';
                 }
             });
-        }
+        });
     });
 }

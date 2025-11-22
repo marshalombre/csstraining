@@ -25,63 +25,75 @@ import { SpaceInvadersGame } from '../games/invaders.js';
 
 // Initialisation globale
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialiser la navigation et le thème
-    new Navigation();
-    new ThemeManager();
-    initCollapsibles();
+    console.log('🚀 Initialisation de l\'application...');
 
-    // Initialiser les visualisations mathématiques
-    initPrimes();
-    initFibonacci();
-    initPalette();
-    initPascal();
-    initMandelbrot();
-    initUlam();
-    initWeierstrass();
-    initSurface3D();
+    try {
+        // Initialiser la navigation et le thème
+        console.log('📍 Initialisation navigation...');
+        new Navigation();
+        console.log('🎨 Initialisation thème...');
+        new ThemeManager();
+        console.log('📂 Initialisation collapsibles...');
+        initCollapsibles();
 
-    // Initialiser les jeux
-    const tetrisGame = new TetrisGame('tetris-canvas');
-    const pongGame = new PongGame('pong-canvas');
-    const snakeGame = new SnakeGame('snake-canvas');
-    const breakoutGame = new BreakoutGame('breakout-canvas');
-    const memoryGame = new MemoryGame('memory-grid');
-    const game2048 = new Game2048('2048-grid');
-    const flappyGame = new FlappyBirdGame('flappy-canvas');
-    const invadersGame = new SpaceInvadersGame('invaders-canvas');
+        // Initialiser les visualisations mathématiques
+        console.log('🔢 Initialisation modules mathématiques...');
+        initPrimes();
+        initFibonacci();
+        initPalette();
+        initPascal();
+        initMandelbrot();
+        initUlam();
+        initWeierstrass();
+        initSurface3D();
 
-    // Event listeners pour Tetris
-    document.getElementById('tetris-start').addEventListener('click', () => tetrisGame.start());
-    document.getElementById('tetris-pause').addEventListener('click', () => tetrisGame.pause());
-    document.getElementById('tetris-reset').addEventListener('click', () => tetrisGame.reset());
+        // Initialiser les jeux
+        console.log('🎮 Initialisation jeux...');
+        const tetrisGame = new TetrisGame('tetris-canvas');
+        const pongGame = new PongGame('pong-canvas');
+        const snakeGame = new SnakeGame('snake-canvas');
+        const breakoutGame = new BreakoutGame('breakout-canvas');
+        const memoryGame = new MemoryGame('memory-grid');
+        const game2048 = new Game2048('2048-grid');
+        const flappyGame = new FlappyBirdGame('flappy-canvas');
+        const invadersGame = new SpaceInvadersGame('invaders-canvas');
 
-    // Event listeners pour Pong
-    document.getElementById('pong-start').addEventListener('click', () => pongGame.start());
-    document.getElementById('pong-reset').addEventListener('click', () => pongGame.reset());
+        // Event listeners pour Tetris
+        document.getElementById('tetris-start').addEventListener('click', () => tetrisGame.start());
+        document.getElementById('tetris-pause').addEventListener('click', () => tetrisGame.pause());
+        document.getElementById('tetris-reset').addEventListener('click', () => tetrisGame.reset());
 
-    // Event listeners pour Snake
-    document.getElementById('snake-start').addEventListener('click', () => snakeGame.start());
-    document.getElementById('snake-reset').addEventListener('click', () => snakeGame.reset());
+        // Event listeners pour Pong
+        document.getElementById('pong-start').addEventListener('click', () => pongGame.start());
+        document.getElementById('pong-reset').addEventListener('click', () => pongGame.reset());
 
-    // Event listeners pour Breakout
-    document.getElementById('breakout-start').addEventListener('click', () => breakoutGame.start());
-    document.getElementById('breakout-reset').addEventListener('click', () => breakoutGame.reset());
+        // Event listeners pour Snake
+        document.getElementById('snake-start').addEventListener('click', () => snakeGame.start());
+        document.getElementById('snake-reset').addEventListener('click', () => snakeGame.reset());
 
-    // Event listeners pour Memory
-    document.getElementById('memory-start').addEventListener('click', () => memoryGame.reset());
-    document.getElementById('memory-reset').addEventListener('click', () => memoryGame.reset());
+        // Event listeners pour Breakout
+        document.getElementById('breakout-start').addEventListener('click', () => breakoutGame.start());
+        document.getElementById('breakout-reset').addEventListener('click', () => breakoutGame.reset());
 
-    // Event listeners pour 2048
-    document.getElementById('2048-start').addEventListener('click', () => game2048.reset());
-    document.getElementById('2048-reset').addEventListener('click', () => game2048.reset());
+        // Event listeners pour Memory
+        document.getElementById('memory-start').addEventListener('click', () => memoryGame.reset());
+        document.getElementById('memory-reset').addEventListener('click', () => memoryGame.reset());
 
-    // Event listeners pour Flappy Bird
-    document.getElementById('flappy-start').addEventListener('click', () => flappyGame.start());
-    document.getElementById('flappy-reset').addEventListener('click', () => flappyGame.reset());
+        // Event listeners pour 2048
+        document.getElementById('2048-start').addEventListener('click', () => game2048.reset());
+        document.getElementById('2048-reset').addEventListener('click', () => game2048.reset());
 
-    // Event listeners pour Space Invaders
-    document.getElementById('invaders-start').addEventListener('click', () => invadersGame.start());
-    document.getElementById('invaders-reset').addEventListener('click', () => invadersGame.reset());
+        // Event listeners pour Flappy Bird
+        document.getElementById('flappy-start').addEventListener('click', () => flappyGame.start());
+        document.getElementById('flappy-reset').addEventListener('click', () => flappyGame.reset());
 
-    console.log('✅ Application initialisée avec succès');
+        // Event listeners pour Space Invaders
+        document.getElementById('invaders-start').addEventListener('click', () => invadersGame.start());
+        document.getElementById('invaders-reset').addEventListener('click', () => invadersGame.reset());
+
+        console.log('✅ Application initialisée avec succès');
+    } catch (error) {
+        console.error('❌ Erreur lors de l\'initialisation:', error);
+        console.error('Stack trace:', error.stack);
+    }
 });

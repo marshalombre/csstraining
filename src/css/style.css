@@ -122,7 +122,7 @@ p {
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 40px 0 60px;
+    padding: 10px 0 10px;
     width: 100%;
 }
 
@@ -430,26 +430,6 @@ button:active {
 .collapsible-content-pascal.open,
 .collapsible-content-mandelbrot.open,
 .collapsible-content-ulam.open,
-.collapsible-content-weierstrass.open,
-.collapsible-content-surface.open {
-    padding: 20px;
-}
-
-.collapsible-content p,
-.collapsible-content-fib p,
-.collapsible-content-palette p,
-.collapsible-content-pascal p,
-.collapsible-content-mandelbrot p,
-.collapsible-content-ulam p,
-.collapsible-content-weierstrass p,
-.collapsible-content-surface p {
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
-
-.collapsible-content strong,
-.collapsible-content-fib strong,
-.collapsible-content-palette strong,
 .collapsible-content-pascal strong,
 .collapsible-content-mandelbrot strong,
 .collapsible-content-ulam strong,
