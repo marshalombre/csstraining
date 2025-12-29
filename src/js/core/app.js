@@ -28,6 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Initialisation de l\'application...');
 
     try {
+        // Sélection automatique du texte au focus pour tous les inputs (Global UX)
+        document.addEventListener('focusin', (event) => {
+            if (event.target.tagName === 'INPUT' && (event.target.type === 'number' || event.target.type === 'text')) {
+                // Utiliser setTimeout pour s'assurer que le focus est bien établi avant de sélectionner
+                setTimeout(() => {
+                    event.target.select();
+                }, 0);
+            }
+        });
+
         // Initialiser la navigation et le thème
         console.log('📍 Initialisation navigation...');
         new Navigation();
