@@ -20,6 +20,7 @@ This application demonstrates modern JavaScript architecture and clean design pr
 - 📱 **100% Responsive** - Fluid media queries
 - ♿ **Accessible** - Keyboard navigation, descriptive buttons
 - 🌓 **Dark/Light Mode** - Theme switching with localStorage
+- 🌍 **Multi-Language** - English, French, German, Spanish, Italian
 
 ---
 
@@ -31,12 +32,15 @@ cssTraining/
 │   ├── html/
 │   │   └── index.html              # Structure & navigation
 │   ├── css/
-│   │   └── style.css               # Premium design system (780 lines)
+│   │   ├── components/             # Component styles
+│   │   └── style.css               # Premium design system
 │   └── js/
 │       ├── core/                   # System modules
 │       │   ├── app.js              # ES6 entry point
 │       │   ├── navigation.js       # Menu & tab management
 │       │   ├── theme.js            # Light/dark theme
+│       │   ├── language.js         # Language management (i18n)
+│       │   ├── translations.js     # Translation dictionary
 │       │   └── collapsibles.js     # Toggle buttons
 │       ├── math/                   # Visualizations (8)
 │       │   ├── primes.js
