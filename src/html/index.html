@@ -17,47 +17,59 @@
     <div class="container">
         <!-- Header with title and theme button -->
         <div class="header">
-            <h1>Web Experiments</h1>
-            <button id="themeToggle">🌙</button>
+            <h1 data-i18n="header.title">Expériences Web</h1>
+            <div class="top-controls">
+                <select id="langSelect">
+                    <option value="fr">FR</option>
+                    <option value="en">EN</option>
+                    <option value="de">DE</option>
+                    <option value="es">ES</option>
+                    <option value="it">IT</option>
+                </select>
+                <button id="themeToggle">🌙</button>
+            </div>
         </div>
 
         <!-- Main Menu -->
         <div class="main-menu">
-            <button class="main-menu-btn active" data-section="math">🧮 Math Experiments</button>
-            <button class="main-menu-btn" data-section="games">🎮 Games</button>
+            <button class="main-menu-btn active" data-section="math" data-i18n="menu.math">🧮 Expériences Maths</button>
+            <button class="main-menu-btn" data-section="games" data-i18n="menu.games">🎮 Jeux</button>
         </div>
 
         <!-- Math Section -->
         <div id="math-section" class="main-section active">
             <!-- Math Tabs Navigation -->
             <div class="tabs">
-                <button class="tab-button active" data-tab="tab1">Prime Numbers</button>
-                <button class="tab-button" data-tab="tab2">Fibonacci</button>
-                <button class="tab-button" data-tab="tab3">Color Palette</button>
-                <button class="tab-button" data-tab="tab4">Pascal's Triangle</button>
-                <button class="tab-button" data-tab="tab5">Mandelbrot</button>
-                <button class="tab-button" data-tab="tab6">Ulam Spiral</button>
-                <button class="tab-button" data-tab="tab7">Weierstrass Function</button>
-                <button class="tab-button" data-tab="tab8">3D Surface</button>
+                <button class="tab-button active" data-tab="tab1" data-i18n="tabs.prime">Nombres Premiers</button>
+                <button class="tab-button" data-tab="tab2" data-i18n="tabs.fibonacci">Fibonacci</button>
+                <button class="tab-button" data-tab="tab3" data-i18n="tabs.palette">Palette de Couleurs</button>
+                <button class="tab-button" data-tab="tab4" data-i18n="tabs.pascal">Triangle de Pascal</button>
+                <button class="tab-button" data-tab="tab5" data-i18n="tabs.mandelbrot">Mandelbrot</button>
+                <button class="tab-button" data-tab="tab6" data-i18n="tabs.ulam">Spirale d'Ulam</button>
+                <button class="tab-button" data-tab="tab7" data-i18n="tabs.weierstrass">Fonction de Weierstrass</button>
+                <button class="tab-button" data-tab="tab8" data-i18n="tabs.surface">Surface 3D</button>
             </div>
 
             <!-- Tab 1: Prime Numbers -->
             <div id="tab1" class="tab-pane active">
-                <h2>Prime Numbers - Gauss Staircase</h2>
+                <h2 data-i18n="math.prime.title">Nombres Premiers - Escalier de Gauss</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn">Show / Hide Description</button>
+                    <button class="collapsible-btn" data-i18n="controls.showDesc">Show / Hide Description</button>
                     <div class="collapsible-content">
-                        <p>The <strong>Prime Number Theorem</strong> describes the asymptotic distribution of prime
+                        <p data-i18n="math.prime.desc1">The <strong>Prime Number Theorem</strong> describes the
+                            asymptotic distribution of prime
                             numbers. The prime-counting function, denoted <strong>π(x)</strong>, gives the number of
                             primes less than or equal to x.</p>
-                        <p>This visualization compares the actual step function π(x) (in blue) with the logarithmic
+                        <p data-i18n="math.prime.desc2">This visualization compares the actual step function π(x) (in
+                            blue) with the logarithmic
                             integral approximation Li(x) (in red), illustrating the famous Riemann Hypothesis regarding
                             the distribution of zeros of the zeta function.</p>
                     </div>
                 </div>
                 <div class="controls">
-                    <input type="number" id="nInput" min="1" value="50" placeholder="Enter a value">
-                    <button id="drawBtn">Draw</button>
+                    <input type="number" id="nInput" min="1" value="50" placeholder="Enter a value"
+                        data-i18n="math.prime.input">
+                    <button id="drawBtn" data-i18n="math.prime.button">Draw</button>
                 </div>
                 <div class="chart-container">
                     <div id="myChart"></div>
@@ -66,21 +78,23 @@
 
             <!-- Tab 2: Fibonacci -->
             <div id="tab2" class="tab-pane">
-                <h2>Fibonacci Sequence - Visualization</h2>
+                <h2 data-i18n="math.fibonacci.title">Fibonacci Sequence - Visualization</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn-fib">Show / Hide Description</button>
+                    <button class="collapsible-btn-fib" data-i18n="controls.showDesc">Show / Hide Description</button>
                     <div class="collapsible-content-fib">
-                        <p>The <strong>Fibonacci sequence</strong> is defined by the recurrence: F(n) = F(n-1) + F(n-2),
+                        <p data-i18n="math.fibonacci.desc1">The <strong>Fibonacci sequence</strong> is defined by the
+                            recurrence: F(n) = F(n-1) + F(n-2),
                             with F(0)=0 and F(1)=1.</p>
-                        <p>This sequence is intimately linked to the <strong>Golden Ratio (φ ≈ 1.618)</strong>. The
+                        <p data-i18n="math.fibonacci.desc2">This sequence is intimately linked to the <strong>Golden
+                                Ratio (φ ≈ 1.618)</strong>. The
                             visualization shows the logarithmic spiral (golden spiral) built from squares whose sides
                             follow the Fibonacci sequence, a pattern often observed in nature (shells, sunflowers).</p>
                     </div>
                 </div>
                 <div class="controls">
-                    <label for="fibInput">Number of terms:</label>
+                    <label for="fibInput" data-i18n="math.fibonacci.input">Number of terms:</label>
                     <input type="number" id="fibInput" min="1" max="20" value="10">
-                    <button id="fibBtn">Generate</button>
+                    <button id="fibBtn" data-i18n="math.fibonacci.button">Generate</button>
                 </div>
                 <div id="fibResults" style="text-align: center; margin: 20px; font-size: 18px;"></div>
                 <div class="chart-container">
@@ -91,20 +105,23 @@
 
             <!-- Tab 3: Color Palette -->
             <div id="tab3" class="tab-pane">
-                <h2>Color Palette Generator</h2>
+                <h2 data-i18n="math.palette.title">Color Palette Generator</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn-palette">Show / Hide Description</button>
+                    <button class="collapsible-btn-palette" data-i18n="controls.showDesc">Show / Hide
+                        Description</button>
                     <div class="collapsible-content-palette">
-                        <p>This generator uses color theory to create harmonious palettes based on a primary color.</p>
-                        <p>It calculates variations in Hue, Saturation, and Lightness in the <strong>HSL</strong> color
+                        <p data-i18n="math.palette.desc1">This generator uses color theory to create harmonious palettes
+                            based on a primary color.</p>
+                        <p data-i18n="math.palette.desc2">It calculates variations in Hue, Saturation, and Lightness in
+                            the <strong>HSL</strong> color
                             space. Algorithms include analogous, complementary, triadic, and monochromatic schemes to
                             ensure perfect visual balance.</p>
                     </div>
                 </div>
                 <div class="controls">
-                    <label for="colorInput">Base color:</label>
+                    <label for="colorInput" data-i18n="math.palette.input">Base color:</label>
                     <input type="color" id="colorInput" value="#3498db">
-                    <button id="generatePaletteBtn">Generate Palette</button>
+                    <button id="generatePaletteBtn" data-i18n="math.palette.button">Generate Palette</button>
                 </div>
                 <div id="paletteDisplay"
                     style="display: flex; gap: 10px; justify-content: center; margin: 30px; flex-wrap: wrap;"></div>
@@ -112,21 +129,25 @@
 
             <!-- Tab 4: Pascal's Triangle -->
             <div id="tab4" class="tab-pane">
-                <h2>Pascal's Triangle</h2>
+                <h2 data-i18n="math.pascal.title">Pascal's Triangle</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn-pascal">Show / Hide Description</button>
+                    <button class="collapsible-btn-pascal" data-i18n="controls.showDesc">Show / Hide
+                        Description</button>
                     <div class="collapsible-content-pascal">
-                        <p><strong>Pascal's Triangle</strong> is a geometric presentation of binomial coefficients. Each
+                        <p data-i18n="math.pascal.desc1"><strong>Pascal's Triangle</strong> is a geometric presentation
+                            of binomial coefficients. Each
                             number is the sum of the two numbers directly above it.</p>
-                        <p>By coloring odd numbers and leaving even ones white, a fractal structure known as
+                        <p data-i18n="math.pascal.desc2">By coloring odd numbers and leaving even ones white, a fractal
+                            structure known as
                             <strong>Sierpinski's Triangle</strong> appears. This property links combinatorial arithmetic
-                            to fractal geometry.</p>
+                            to fractal geometry.
+                        </p>
                     </div>
                 </div>
                 <div class="controls">
-                    <label for="pascalInput">Number of rows:</label>
-                    <input type="number" id="pascalInput" min="1" max="20" value="12">
-                    <button id="pascalBtn">Generate</button>
+                    <label for="pascalInput" data-i18n="math.pascal.input">Number of rows:</label>
+                    <input type="number" id="pascalInput" min="1" max="50" value="12">
+                    <button id="pascalBtn" data-i18n="math.pascal.button">Generate</button>
                 </div>
                 <div class="chart-container">
                     <canvas id="pascalCanvas"
@@ -136,21 +157,24 @@
 
             <!-- Tab 5: Mandelbrot -->
             <div id="tab5" class="tab-pane">
-                <h2>Mandelbrot Set</h2>
+                <h2 data-i18n="math.mandelbrot.title">Mandelbrot Set</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn-mandelbrot">Show / Hide Description</button>
+                    <button class="collapsible-btn-mandelbrot" data-i18n="controls.showDesc">Show / Hide
+                        Description</button>
                     <div class="collapsible-content-mandelbrot">
-                        <p>The <strong>Mandelbrot Set</strong> is the set of points c in the complex plane for which the
+                        <p data-i18n="math.mandelbrot.desc1">The <strong>Mandelbrot Set</strong> is the set of points c
+                            in the complex plane for which the
                             sequence defined by z₀=0 and z(n+1) = z(n)² + c remains bounded.</p>
-                        <p>It is the archetype of fractals: an infinitely complex structure exhibiting self-similarity
+                        <p data-i18n="math.mandelbrot.desc2">It is the archetype of fractals: an infinitely complex
+                            structure exhibiting self-similarity
                             at different scales. The boundary of the set is infinitely complex, revealing 'seahorse'
                             patterns and miniature copies of the main set.</p>
                     </div>
                 </div>
                 <div class="controls">
-                    <label for="mandelbrotIterations">Max iterations:</label>
+                    <label for="mandelbrotIterations" data-i18n="math.mandelbrot.input">Max iterations:</label>
                     <input type="number" id="mandelbrotIterations" min="10" max="200" value="50">
-                    <button id="mandelbrotBtn">Generate</button>
+                    <button id="mandelbrotBtn" data-i18n="math.mandelbrot.button">Generate</button>
                 </div>
                 <div class="chart-container">
                     <canvas id="mandelbrotCanvas"
@@ -160,21 +184,23 @@
 
             <!-- Tab 6: Ulam Spiral -->
             <div id="tab6" class="tab-pane">
-                <h2>Ulam Spiral</h2>
+                <h2 data-i18n="math.ulam.title">Ulam Spiral</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn-ulam">Show / Hide Description</button>
+                    <button class="collapsible-btn-ulam" data-i18n="controls.showDesc">Show / Hide Description</button>
                     <div class="collapsible-content-ulam">
-                        <p>The <strong>Ulam Spiral</strong> (or prime spiral) is a simple method of representing prime
+                        <p data-i18n="math.ulam.desc1">The <strong>Ulam Spiral</strong> (or prime spiral) is a simple
+                            method of representing prime
                             numbers that reveals unexpected patterns.</p>
-                        <p>By writing positive integers in a square spiral and marking prime numbers, one observes that
+                        <p data-i18n="math.ulam.desc2">By writing positive integers in a square spiral and marking prime
+                            numbers, one observes that
                             they tend to align on diagonals. This phenomenon, discovered by Stanislaw Ulam in 1963,
                             suggests non-random properties in the distribution of prime numbers.</p>
                     </div>
                 </div>
                 <div class="controls">
-                    <label for="ulamInput">Size:</label>
+                    <label for="ulamInput" data-i18n="math.ulam.input">Size:</label>
                     <input type="number" id="ulamInput" min="10" max="80" value="40">
-                    <button id="ulamBtn">Generate</button>
+                    <button id="ulamBtn" data-i18n="math.ulam.button">Generate</button>
                 </div>
                 <div class="chart-container">
                     <canvas id="ulamCanvas"
@@ -184,21 +210,24 @@
 
             <!-- Tab 7: Weierstrass -->
             <div id="tab7" class="tab-pane">
-                <h2>Weierstrass Function</h2>
+                <h2 data-i18n="math.weierstrass.title">Weierstrass Function</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn-weierstrass">Show / Hide Description</button>
+                    <button class="collapsible-btn-weierstrass" data-i18n="controls.showDesc">Show / Hide
+                        Description</button>
                     <div class="collapsible-content-weierstrass">
-                        <p>The <strong>Weierstrass Function</strong> is a famous counter-example in mathematical
+                        <p data-i18n="math.weierstrass.desc1">The <strong>Weierstrass Function</strong> is a famous
+                            counter-example in mathematical
                             analysis: it is a function that is continuous everywhere but differentiable nowhere.</p>
-                        <p>Defined as an infinite trigonometric series, it presents a fractal structure: no matter the
+                        <p data-i18n="math.weierstrass.desc2">Defined as an infinite trigonometric series, it presents a
+                            fractal structure: no matter the
                             zoom level, the curve remains 'rough' and never smooths out into a straight line, defying
                             classical intuition of differential calculus.</p>
                     </div>
                 </div>
                 <div class="controls">
-                    <label for="weierstrassTerms">Terms:</label>
+                    <label for="weierstrassTerms" data-i18n="math.weierstrass.input">Terms:</label>
                     <input type="number" id="weierstrassTerms" min="5" max="50" value="20">
-                    <button id="weierstrassBtn">Generate</button>
+                    <button id="weierstrassBtn" data-i18n="math.weierstrass.button">Generate</button>
                 </div>
                 <div class="chart-container">
                     <div id="weierstrassChart"></div>
@@ -207,21 +236,24 @@
 
             <!-- Tab 8: 3D Surface -->
             <div id="tab8" class="tab-pane">
-                <h2>Parametric 3D Surface</h2>
+                <h2 data-i18n="math.surface.title">Parametric 3D Surface</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn-surface">Show / Hide Description</button>
+                    <button class="collapsible-btn-surface" data-i18n="controls.showDesc">Show / Hide
+                        Description</button>
                     <div class="collapsible-content-surface">
-                        <p>This visualization represents a <strong>parametric 3D surface</strong> defined by complex
+                        <p data-i18n="math.surface.desc1">This visualization represents a <strong>parametric 3D
+                                surface</strong> defined by complex
                             mathematical equations (x(u,v), y(u,v), z(u,v)).</p>
-                        <p>The interactive graph allows exploring the topology of the surface, showing how simple
+                        <p data-i18n="math.surface.desc2">The interactive graph allows exploring the topology of the
+                            surface, showing how simple
                             trigonometric functions can combine to create organic shapes and complex undulations in
                             three-dimensional space.</p>
                     </div>
                 </div>
                 <div class="controls">
-                    <label for="surfaceResolution">Resolution:</label>
+                    <label for="surfaceResolution" data-i18n="math.surface.input">Resolution:</label>
                     <input type="number" id="surfaceResolution" min="20" max="100" value="50">
-                    <button id="surfaceBtn">Generate</button>
+                    <button id="surfaceBtn" data-i18n="math.surface.button">Generate</button>
                 </div>
                 <div class="chart-container">
                     <div id="surfaceChart"></div>
@@ -233,55 +265,62 @@
         <div id="games-section" class="main-section">
             <!-- Games Navigation -->
             <div class="tabs">
-                <button class="game-tab-button active" data-game="tetris">Tetris</button>
-                <button class="game-tab-button" data-game="pong">Pong</button>
-                <button class="game-tab-button" data-game="snake">Snake</button>
-                <button class="game-tab-button" data-game="breakout">Breakout</button>
-                <button class="game-tab-button" data-game="memory">Memory</button>
-                <button class="game-tab-button" data-game="2048">2048</button>
-                <button class="game-tab-button" data-game="flappy">Flappy Bird</button>
-                <button class="game-tab-button" data-game="invaders">Space Invaders</button>
+                <button class="game-tab-button active" data-game="tetris" data-i18n="tabs.tetris">Tetris</button>
+                <button class="game-tab-button" data-game="pong" data-i18n="tabs.pong">Pong</button>
+                <button class="game-tab-button" data-game="snake" data-i18n="tabs.snake">Snake</button>
+                <button class="game-tab-button" data-game="breakout" data-i18n="tabs.breakout">Breakout</button>
+                <button class="game-tab-button" data-game="memory" data-i18n="tabs.memory">Memory</button>
+                <button class="game-tab-button" data-game="2048" data-i18n="tabs.2048">2048</button>
+                <button class="game-tab-button" data-game="flappy" data-i18n="tabs.flappy">Flappy Bird</button>
+                <button class="game-tab-button" data-game="invaders" data-i18n="tabs.invaders">Space Invaders</button>
             </div>
 
             <!-- Game 1: Tetris -->
             <div id="tetris-game" class="game-pane active">
-                <h2>🧱 Tetris</h2>
+                <h2 data-i18n="games.tetris.title">🧱 Tetris</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn">Show / Hide Description</button>
+                    <button class="collapsible-btn" data-i18n="controls.showDesc">Show / Hide Description</button>
                     <div class="collapsible-content">
-                        <p>Invented by Alexey Pajitnov in 1984, Tetris is the ultimate puzzle game. The goal is to
+                        <p data-i18n="games.tetris.desc1">Invented by Alexey Pajitnov in 1984, Tetris is the ultimate
+                            puzzle game. The goal is to
                             arrange **tetrominoes** (geometric shapes composed of 4 squares) to form complete horizontal
                             lines.</p>
-                        <p>Each completed line disappears, freeing up space. The game progressively speeds up, testing
+                        <p data-i18n="games.tetris.desc2">Each completed line disappears, freeing up space. The game
+                            progressively speeds up, testing
                             your reflexes and spatial planning until the tower reaches the top.</p>
                     </div>
                 </div>
                 <div class="game-container">
                     <div class="game-info">
-                        <div class="game-score">Score: <span id="tetris-score">0</span></div>
-                        <div class="game-level">Level: <span id="tetris-level">1</span></div>
+                        <div class="game-score"><span data-i18n="controls.score">Score:</span> <span
+                                id="tetris-score">0</span></div>
+                        <div class="game-level"><span data-i18n="controls.level">Level:</span> <span
+                                id="tetris-level">1</span></div>
                     </div>
                     <canvas id="tetris-canvas"></canvas>
                     <div class="game-controls">
-                        <button id="tetris-start">Start</button>
-                        <button id="tetris-pause">Pause</button>
-                        <button id="tetris-reset">Restart</button>
+                        <button id="tetris-start" data-i18n="controls.start">Start</button>
+                        <button id="tetris-pause" data-i18n="controls.pause">Pause</button>
+                        <button id="tetris-reset" data-i18n="controls.restart">Restart</button>
                     </div>
                     <div class="game-instructions">
-                        <p><strong>Controls:</strong> ← → Move | ↓ Accelerate | ↑ Rotate | Space Hard Drop</p>
+                        <p data-i18n="games.tetris.controls"><strong>Controls:</strong> ← → Move | ↓ Accelerate | ↑
+                            Rotate | Space Hard Drop</p>
                     </div>
                 </div>
             </div>
 
             <!-- Game 2: Pong -->
             <div id="pong-game" class="game-pane">
-                <h2>🏓 Pong</h2>
+                <h2 data-i18n="games.pong.title">🏓 Pong</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn">Show / Hide Description</button>
+                    <button class="collapsible-btn" data-i18n="controls.showDesc">Show / Hide Description</button>
                     <div class="collapsible-content">
-                        <p>Released in 1972 by Atari, Pong is one of the first successful arcade video games. It
+                        <p data-i18n="games.pong.desc1">Released in 1972 by Atari, Pong is one of the first successful
+                            arcade video games. It
                             simulates a minimalist table tennis match.</p>
-                        <p>The physics are simple but demanding: the ball's bounce angle depends on where it hits the
+                        <p data-i18n="games.pong.desc2">The physics are simple but demanding: the ball's bounce angle
+                            depends on where it hits the
                             paddle. Win the rally by catching your opponent (or the AI) off guard!</p>
                     </div>
                 </div>
@@ -292,182 +331,209 @@
                     </div>
                     <canvas id="pong-canvas"></canvas>
                     <div class="game-controls">
-                        <button id="pong-start">Start</button>
-                        <button id="pong-reset">Restart</button>
+                        <button id="pong-start" data-i18n="controls.start">Start</button>
+                        <button id="pong-reset" data-i18n="controls.restart">Restart</button>
                     </div>
                     <div class="game-instructions">
-                        <p><strong>Controls:</strong> ↑ ↓ or Mouse to move the paddle</p>
+                        <p data-i18n="games.pong.controls"><strong>Controls:</strong> ↑ ↓ or Mouse to move the paddle
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- Game 3: Snake -->
             <div id="snake-game" class="game-pane">
-                <h2>🐍 Snake</h2>
+                <h2 data-i18n="games.snake.title">🐍 Snake</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn">Show / Hide Description</button>
+                    <button class="collapsible-btn" data-i18n="controls.showDesc">Show / Hide Description</button>
                     <div class="collapsible-content">
-                        <p>A classic of 90s mobile phones, whose origins date back to the arcade game 'Blockade' (1976).
+                        <p data-i18n="games.snake.desc1">A classic of 90s mobile phones, whose origins date back to the
+                            arcade game 'Blockade' (1976).
                         </p>
-                        <p>You control a snake that must eat apples to grow. The challenge is purely geometric: the more
+                        <p data-i18n="games.snake.desc2">You control a snake that must eat apples to grow. The challenge
+                            is purely geometric: the more
                             the snake grows, the less free space remains, increasing the risk of collision with its own
                             tail.</p>
                     </div>
                 </div>
                 <div class="game-container">
                     <div class="game-info">
-                        <div class="game-score">Score: <span id="snake-score">0</span></div>
-                        <div class="game-high">Best: <span id="snake-high">0</span></div>
+                        <div class="game-score"><span data-i18n="controls.score">Score:</span> <span
+                                id="snake-score">0</span></div>
+                        <div class="game-high"><span data-i18n="controls.best">Best:</span> <span
+                                id="snake-high">0</span></div>
                     </div>
                     <canvas id="snake-canvas"></canvas>
                     <div class="game-controls">
-                        <button id="snake-start">Start</button>
-                        <button id="snake-reset">Restart</button>
+                        <button id="snake-start" data-i18n="controls.start">Start</button>
+                        <button id="snake-reset" data-i18n="controls.restart">Restart</button>
                     </div>
                     <div class="game-instructions">
-                        <p><strong>Controls:</strong> ← → ↑ ↓ to steer the snake</p>
+                        <p data-i18n="games.snake.controls"><strong>Controls:</strong> ← → ↑ ↓ to steer the snake</p>
                     </div>
                 </div>
             </div>
 
             <!-- Game 4: Breakout -->
             <div id="breakout-game" class="game-pane">
-                <h2>🧱 Breakout</h2>
+                <h2 data-i18n="games.breakout.title">🧱 Breakout</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn">Show / Hide Description</button>
+                    <button class="collapsible-btn" data-i18n="controls.showDesc">Show / Hide Description</button>
                     <div class="collapsible-content">
-                        <p>Inspired by Pong and designed by Nolan Bushnell and Steve Wozniak (Apple co-founder),
+                        <p data-i18n="games.breakout.desc1">Inspired by Pong and designed by Nolan Bushnell and Steve
+                            Wozniak (Apple co-founder),
                             Breakout (1976) adds a strategic dimension to the paddle.</p>
-                        <p>The objective is to destroy a wall of bricks. The ball accelerates over time, and some bricks
+                        <p data-i18n="games.breakout.desc2">The objective is to destroy a wall of bricks. The ball
+                            accelerates over time, and some bricks
                             may require multiple hits. The bounce angle is crucial to reach the most inaccessible
                             bricks.</p>
                     </div>
                 </div>
                 <div class="game-container">
                     <div class="game-info">
-                        <div class="game-score">Score: <span id="breakout-score">0</span></div>
-                        <div class="game-lives">Lives: <span id="breakout-lives">3</span></div>
+                        <div class="game-score"><span data-i18n="controls.score">Score:</span> <span
+                                id="breakout-score">0</span></div>
+                        <div class="game-lives"><span data-i18n="controls.lives">Lives:</span> <span
+                                id="breakout-lives">3</span></div>
                     </div>
                     <canvas id="breakout-canvas"></canvas>
                     <div class="game-controls">
-                        <button id="breakout-start">Start</button>
-                        <button id="breakout-reset">Restart</button>
+                        <button id="breakout-start" data-i18n="controls.start">Start</button>
+                        <button id="breakout-reset" data-i18n="controls.restart">Restart</button>
                     </div>
                     <div class="game-instructions">
-                        <p><strong>Controls:</strong> ← → or Mouse to move the paddle</p>
+                        <p data-i18n="games.breakout.controls"><strong>Controls:</strong> ← → or Mouse to move the
+                            paddle</p>
                     </div>
                 </div>
             </div>
 
             <!-- Game 5: Memory -->
             <div id="memory-game" class="game-pane">
-                <h2>🎴 Memory</h2>
+                <h2 data-i18n="games.memory.title">🎴 Memory</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn">Show / Hide Description</button>
+                    <button class="collapsible-btn" data-i18n="controls.showDesc">Show / Hide Description</button>
                     <div class="collapsible-content">
-                        <p>Also known as 'Pelmanism', this game exercises visual and spatial short-term memory.</p>
-                        <p>The principle is simple but formidable: flip two cards at a time to find pairs. The key is to
+                        <p data-i18n="games.memory.desc1">Also known as 'Pelmanism', this game exercises visual and
+                            spatial short-term memory.</p>
+                        <p data-i18n="games.memory.desc2">The principle is simple but formidable: flip two cards at a
+                            time to find pairs. The key is to
                             memorize the location of unmatched cards to find them later. An excellent exercise for the
                             brain!</p>
                     </div>
                 </div>
                 <div class="game-container">
                     <div class="game-info">
-                        <div class="game-score">Moves: <span id="memory-moves">0</span></div>
-                        <div class="game-timer">Time: <span id="memory-time">0</span>s</div>
+                        <div class="game-score"><span data-i18n="controls.moves">Moves:</span> <span
+                                id="memory-moves">0</span></div>
+                        <div class="game-timer"><span data-i18n="controls.time">Time:</span> <span
+                                id="memory-time">0</span>s</div>
                     </div>
                     <div id="memory-grid" class="memory-grid"></div>
                     <div class="game-controls">
-                        <button id="memory-start">Start</button>
-                        <button id="memory-reset">Restart</button>
+                        <button id="memory-start" data-i18n="controls.start">Start</button>
+                        <button id="memory-reset" data-i18n="controls.restart">Restart</button>
                     </div>
                     <div class="game-instructions">
-                        <p><strong>Goal:</strong> Find all pairs of identical cards</p>
+                        <p data-i18n="games.memory.controls"><strong>Goal:</strong> Find all pairs of identical cards
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- Game 6: 2048 -->
             <div id="2048-game" class="game-pane">
-                <h2>🔢 2048</h2>
+                <h2 data-i18n="games.2048.title">🔢 2048</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn">Show / Hide Description</button>
+                    <button class="collapsible-btn" data-i18n="controls.showDesc">Show / Hide Description</button>
                     <div class="collapsible-content">
-                        <p>Created by Gabriele Cirulli in 2014, this mathematical puzzle game is based on powers of 2.
+                        <p data-i18n="games.2048.desc1">Created by Gabriele Cirulli in 2014, this mathematical puzzle
+                            game is based on powers of 2.
                         </p>
-                        <p>By sliding tiles, you merge identical numbers: 2+2=4, 4+4=8, etc. Complexity increases
+                        <p data-i18n="games.2048.desc2">By sliding tiles, you merge identical numbers: 2+2=4, 4+4=8,
+                            etc. Complexity increases
                             exponentially as space on the 4x4 grid fills up quickly. The ultimate goal is to create the
                             2048 tile.</p>
                     </div>
                 </div>
                 <div class="game-container">
                     <div class="game-info">
-                        <div class="game-score">Score: <span id="2048-score">0</span></div>
-                        <div class="game-best">Best: <span id="2048-best">0</span></div>
+                        <div class="game-score"><span data-i18n="controls.score">Score:</span> <span
+                                id="2048-score">0</span></div>
+                        <div class="game-best"><span data-i18n="controls.best">Best:</span> <span
+                                id="2048-best">0</span></div>
                     </div>
                     <div id="2048-grid" class="grid-2048"></div>
                     <div class="game-controls">
-                        <button id="2048-start">New Game</button>
-                        <button id="2048-reset">Restart</button>
+                        <button id="2048-start" data-i18n="controls.newGame">New Game</button>
+                        <button id="2048-reset" data-i18n="controls.restart">Restart</button>
                     </div>
                     <div class="game-instructions">
-                        <p><strong>Controls:</strong> ← → ↑ ↓ to merge tiles</p>
+                        <p data-i18n="games.2048.controls"><strong>Controls:</strong> ← → ↑ ↓ to merge tiles</p>
                     </div>
                 </div>
             </div>
 
             <!-- Game 7: Flappy Bird -->
             <div id="flappy-game" class="game-pane">
-                <h2>🐦 Flappy Bird</h2>
+                <h2 data-i18n="games.flappy.title">🐦 Flappy Bird</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn">Show / Hide Description</button>
+                    <button class="collapsible-btn" data-i18n="controls.showDesc">Show / Hide Description</button>
                     <div class="collapsible-content">
-                        <p>Becoming a viral phenomenon in 2013 thanks to its punishing difficulty, this game relies on a
+                        <p data-i18n="games.flappy.desc1">Becoming a viral phenomenon in 2013 thanks to its punishing
+                            difficulty, this game relies on a
                             simple mechanic: tap to counter gravity.</p>
-                        <p>The challenge lies in the precision of the rhythm. Each passage between pipes demands perfect
+                        <p data-i18n="games.flappy.desc2">The challenge lies in the precision of the rhythm. Each
+                            passage between pipes demands perfect
                             timing, creating a steep and addictive learning curve based on the 'high score'.</p>
                     </div>
                 </div>
                 <div class="game-container">
                     <div class="game-info">
-                        <div class="game-score">Score: <span id="flappy-score">0</span></div>
-                        <div class="game-best">Best: <span id="flappy-best">0</span></div>
+                        <div class="game-score"><span data-i18n="controls.score">Score:</span> <span
+                                id="flappy-score">0</span></div>
+                        <div class="game-best"><span data-i18n="controls.best">Best:</span> <span
+                                id="flappy-best">0</span></div>
                     </div>
                     <canvas id="flappy-canvas"></canvas>
                     <div class="game-controls">
-                        <button id="flappy-start">Start</button>
-                        <button id="flappy-reset">Restart</button>
+                        <button id="flappy-start" data-i18n="controls.start">Start</button>
+                        <button id="flappy-reset" data-i18n="controls.restart">Restart</button>
                     </div>
                     <div class="game-instructions">
-                        <p><strong>Controls:</strong> Space or Click to fly</p>
+                        <p data-i18n="games.flappy.controls"><strong>Controls:</strong> Space or Click to fly</p>
                     </div>
                 </div>
             </div>
 
             <!-- Game 8: Space Invaders -->
             <div id="invaders-game" class="game-pane">
-                <h2>👾 Space Invaders</h2>
+                <h2 data-i18n="games.invaders.title">👾 Space Invaders</h2>
                 <div class="collapsible-container">
-                    <button class="collapsible-btn">Show / Hide Description</button>
+                    <button class="collapsible-btn" data-i18n="controls.showDesc">Show / Hide Description</button>
                     <div class="collapsible-content">
-                        <p>The icon of the golden age of arcade (1978). You pilot a mobile laser cannon defending Earth
+                        <p data-i18n="games.invaders.desc1">The icon of the golden age of arcade (1978). You pilot a
+                            mobile laser cannon defending Earth
                             against waves of aliens.</p>
-                        <p>A subtle mechanic of the original game is present here: the more enemies you destroy, the
+                        <p data-i18n="games.invaders.desc2">A subtle mechanic of the original game is present here: the
+                            more enemies you destroy, the
                             faster the game becomes. Use bunkers for protection and aim true to repel the invasion.</p>
                     </div>
                 </div>
                 <div class="game-container">
                     <div class="game-info">
-                        <div class="game-score">Score: <span id="invaders-score">0</span></div>
-                        <div class="game-lives">Lives: <span id="invaders-lives">3</span></div>
+                        <div class="game-score"><span data-i18n="controls.score">Score:</span> <span
+                                id="invaders-score">0</span></div>
+                        <div class="game-lives"><span data-i18n="controls.lives">Lives:</span> <span
+                                id="invaders-lives">3</span></div>
                     </div>
                     <canvas id="invaders-canvas"></canvas>
                     <div class="game-controls">
-                        <button id="invaders-start">Start</button>
-                        <button id="invaders-reset">Restart</button>
+                        <button id="invaders-start" data-i18n="controls.start">Start</button>
+                        <button id="invaders-reset" data-i18n="controls.restart">Restart</button>
                     </div>
                     <div class="game-instructions">
-                        <p><strong>Controls:</strong> ← → Move | Space Fire</p>
+                        <p data-i18n="games.invaders.controls"><strong>Controls:</strong> ← → Move | Space Fire</p>
                     </div>
                 </div>
             </div>

@@ -50,15 +50,39 @@ function generateUlam() {
         step++;
     }
 
+    // Determine if text should be shown based on cell size
+    const showText = cellSize >= 15;
+    const fontSize = Math.max(cellSize * 0.4, 8); // Minimum 8px font
+
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
             if (grid[i][j] > 0) {
-                if (isPrime(grid[i][j])) {
+                const isPrimeVal = isPrime(grid[i][j]);
+
+                if (isPrimeVal) {
                     ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
                 } else {
                     ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--surface-color');
                 }
                 ctx.fillRect(j * cellSize, i * cellSize, cellSize - 1, cellSize - 1);
+
+                // Add numbers to squares
+                if (showText) {
+                    // Set contrasting color for text
+                    if (isPrimeVal) {
+                        // On primary color, standard text color might be hard to read depending on theme
+                        // Let's assume white for primary (usually dark/saturated)
+                        ctx.fillStyle = '#ffffff';
+                    } else {
+                        // On surface color, use standard text color
+                        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
+                    }
+
+                    ctx.font = `${fontSize}px 'Inter', sans-serif`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(grid[i][j], j * cellSize + cellSize / 2, i * cellSize + cellSize / 2);
+                }
             }
         }
     }

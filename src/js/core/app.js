@@ -1,6 +1,7 @@
 // Point d'entrée principal de l'application
 import { Navigation } from './navigation.js';
 import { ThemeManager } from './theme.js';
+import { LanguageManager } from './language.js';
 import { initCollapsibles } from './collapsibles.js';
 
 // Import des modules mathématiques
@@ -43,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
         new Navigation();
         console.log('🎨 Initialisation thème...');
         new ThemeManager();
+        console.log('🌐 Initialisation langues...');
+        new LanguageManager();
         console.log('📂 Initialisation collapsibles...');
         initCollapsibles();
 
