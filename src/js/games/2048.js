@@ -39,6 +39,10 @@ export class Game2048 {
         this.addRandomTile();
     }
 
+    reset() {
+        this.init();
+    }
+
     setupGrid() {
         this.gridContainer.innerHTML = '';
         // Create 16 static background cells
@@ -51,13 +55,17 @@ export class Game2048 {
 
     // Helper to get position in styles
     getPositionStyle(x, y) {
-        // We use transform translate.
-        // X = 16px + x*(25% - 5px) = 25%*x + 16px - 5px*x
-        const xPos = `calc(25% * ${x} + 16px - 5px * ${x})`;
-        const yPos = `calc(25% * ${y} + 16px - 5px * ${y})`;
-
+        // The grid container has 16px padding on all sides
+        // Inner space = 100% - 2*16px = 100% - 32px
+        // The grid has: 4 cells + 3 gaps of 12px between them
+        // Each cell width: (innerSpace - 3*12px) / 4 = (100% - 32px - 36px) / 4 = (100% - 68px) / 4
+        // Position: padding + index * (cellWidth + gap)
+        const padding = 16;
+        const gap = 12;
+        
         return {
-            transform: `translate(${xPos}, ${yPos})`
+            left: x === 0 ? `${padding}px` : `calc(${padding}px + ${x} * ((100% - 68px) / 4 + ${gap}px))`,
+            top: y === 0 ? `${padding}px` : `calc(${padding}px + ${y} * ((100% - 68px) / 4 + ${gap}px))`
         };
     }
 
@@ -89,18 +97,21 @@ export class Game2048 {
         this.gridContainer.appendChild(tile.element);
         this.tiles.push(tile);
 
-        // Add pop animation class
-        requestAnimationFrame(() => {
+        // Add pop animation - use a slight delay to ensure positioning is applied first
+        setTimeout(() => {
             tile.element.classList.add('tile-new');
-        });
+        }, 10);
 
         return tile;
     }
 
     setTilePosition(tile, x, y) {
+        tile.x = x;
+        tile.y = y;
         const styles = this.getPositionStyle(x, y);
-        // Apply transform
-        tile.element.style.transform = styles.transform;
+        // Apply left and top positioning
+        tile.element.style.left = styles.left;
+        tile.element.style.top = styles.top;
     }
 
     getTileAt(x, y) {

@@ -28,6 +28,13 @@ import { SpaceInvadersGame } from '../games/invaders.js';
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Initialisation de l\'application...');
 
+    // Vérifier que Plotly est chargé
+    if (typeof Plotly !== 'undefined') {
+        console.log('✅ Plotly est chargé (version:', Plotly.BUILD, ')');
+    } else {
+        console.warn('⚠️ Plotly n\'est pas chargé - les graphiques mathématiques ne fonctionneront pas');
+    }
+
     try {
         // Sélection automatique du texte au focus pour tous les inputs (Global UX)
         document.addEventListener('focusin', (event) => {

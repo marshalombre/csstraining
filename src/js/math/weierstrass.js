@@ -1,5 +1,10 @@
 // Module Fonction de Weierstrass
 function generateWeierstrass() {
+    if (typeof Plotly === 'undefined') {
+        console.error('Plotly is not loaded yet');
+        return;
+    }
+    
     const terms = parseInt(document.getElementById("weierstrassTerms").value) || 20;
     const a = 0.5;
     const b = 7;
@@ -52,5 +57,5 @@ function generateWeierstrass() {
 
 export function initWeierstrass() {
     document.getElementById("weierstrassBtn").addEventListener("click", generateWeierstrass);
-    generateWeierstrass();
+    // Don't generate on load - wait for user interaction or tab change
 }

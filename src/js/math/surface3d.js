@@ -1,5 +1,10 @@
 // Module Surface 3D Paramétrique
 function generate3DSurface() {
+    if (typeof Plotly === 'undefined') {
+        console.error('Plotly is not loaded yet');
+        return;
+    }
+    
     const resolution = parseInt(document.getElementById("surfaceResolution").value) || 50;
 
     const xValues = [];
@@ -53,5 +58,5 @@ function generate3DSurface() {
 
 export function initSurface3D() {
     document.getElementById("surfaceBtn").addEventListener("click", generate3DSurface);
-    generate3DSurface();
+    // Don't generate on load - wait for user interaction or tab change
 }

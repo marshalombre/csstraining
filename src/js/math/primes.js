@@ -18,6 +18,11 @@ function generatePrimeData(n) {
 }
 
 function plotPrimes(data) {
+    if (typeof Plotly === 'undefined') {
+        console.error('Plotly is not loaded yet');
+        return;
+    }
+    
     const xValues = data.map(point => point.x);
     const yValues = data.map(point => point.y);
 
