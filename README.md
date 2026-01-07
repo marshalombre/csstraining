@@ -79,8 +79,9 @@ cssTraining/
 src/html/index.html
 
 # Option 2: Local server (recommended for ES6 modules)
-npx serve src/html
-# Open http://localhost:3000
+# Option 2: Local server (recommended for ES6 modules)
+npx serve src
+# Open http://localhost:3000/html
 ```
 
 > **Note:** ES6 modules require HTTP server (not `file://`) in Chrome
